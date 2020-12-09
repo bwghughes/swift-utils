@@ -14,22 +14,22 @@ class SimpleDateFormatterTests: XCTestCase {
         ("testFormatDate", testFormatDate),
         ("testFormatRelativeDate", testFormatRelativeDate),
     ]
-    private let formatter = SimpleDateFormatter(locale: Locale(identifier: "en"))
+    private let formatter = SimpleDateFormatter(locale: Locale(identifier: "en-GB"))
     
     func testFormatDate() {
         let date = Date(timeIntervalSince1970: 1576671427)
         
         var dateString = formatter.format(date: date, dateStyle: .medium, timeStyle: .none)
         XCTAssertNotNil(dateString)
-        XCTAssertEqual(dateString, "Dec 18, 2019")
+        XCTAssertEqual(dateString, "18 Dec 2019")
         
         dateString = formatter.format(date: date, dateStyle: .long, timeStyle: .medium)
         XCTAssertNotNil(dateString)
-        XCTAssertEqual(dateString, "December 18, 2019 at 1:17:07 PM")
+        XCTAssertEqual(dateString, "18 December 2019 at 12:17:07")
         
         dateString = formatter.format(date: date, dateStyle: .short, timeStyle: .short)
         XCTAssertNotNil(dateString)
-        XCTAssertEqual(dateString, "12/18/19, 1:17 PM")
+        XCTAssertEqual(dateString, "18/12/2019, 12:17")
     }
     
     func testFormatRelativeDate() {
